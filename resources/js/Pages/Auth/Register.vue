@@ -24,6 +24,11 @@ const submit = () => {
     <GuestLayout>
         <Head title="Register" />
 
+        <v-chip>
+            Chip
+        </v-chip>
+
+
         <form @submit.prevent="submit">
             <div>
                 <InputLabel for="name" value="Name" />

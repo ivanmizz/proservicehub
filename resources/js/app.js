@@ -7,8 +7,7 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 
 
-// Vuetify
-import '@mdi/font/css/materialdesignicons.css'
+/// Vuetify
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
@@ -16,7 +15,7 @@ import * as directives from 'vuetify/directives'
 
 const vuetify = createVuetify({
   components,
-  directives
+  directives,
 })
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
