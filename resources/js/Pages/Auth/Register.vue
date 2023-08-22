@@ -9,6 +9,7 @@ import { Head, Link, useForm } from '@inertiajs/vue3';
 const form = useForm({
     name: '',
     email: '',
+    role: '',
     password: '',
     password_confirmation: '',
 });
@@ -21,16 +22,13 @@ const submit = () => {
 </script>
 
 <template>
+    
     <GuestLayout>
         <Head title="Register" />
 
-        <v-chip>
-            Chip
-        </v-chip>
-
-
-        <form @submit.prevent="submit">
-            <div>
+     
+        <form @submit.prevent="submit" >
+            <div >
                 <InputLabel for="name" value="Name" />
 
                 <TextInput
@@ -45,6 +43,7 @@ const submit = () => {
 
                 <InputError class="mt-2" :message="form.errors.name" />
             </div>
+            
 
             <div class="mt-4">
                 <InputLabel for="email" value="Email" />
@@ -78,7 +77,7 @@ const submit = () => {
 
             <div class="mt-4">
                 <InputLabel for="password_confirmation" value="Confirm Password" />
-
+ 
                 <TextInput
                     id="password_confirmation"
                     type="password"
@@ -86,23 +85,45 @@ const submit = () => {
                     v-model="form.password_confirmation"
                     required
                     autocomplete="new-password"
-                />
+                /> 
 
                 <InputError class="mt-2" :message="form.errors.password_confirmation" />
             </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <Link
-                    :href="route('login')"
-                    class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            <div class="mt-4">
+                <InputLabel for="role" value="Register as*" />
+                <select
+                    id="role"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.role"
+                    required
                 >
-                    Already registered?
-                </Link>
+                    <option>Customer</option>
+                    <option>Staff</option>
+                </select>
+                <InputError class="mt-2" :message="form.errors.role" /> 
+            </div>
 
-                <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+           
+
+            <div class="flex flex-col items-center justify-center mt-4">
+                <PrimaryButton class="ml-4 bg-blue-500 hover:!bg-blue-800" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Register
                 </PrimaryButton>
+
+                <Link
+                    :href="route('login')"
+                    class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md mt-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                    Already registered? Login
+                </Link>
+
+                
             </div>
         </form>
+   
     </GuestLayout>
+
 </template>
+
